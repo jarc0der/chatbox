@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<nav>
+		<ul>
+			<li><a href="index.jsp">Home</a>
+			<li><a href="/logout">LogOut</a>
+		</ul>
+	</nav>
 	<h3>This is your area of comfort!</h3>
 	<form>
 		<input type="text" name="login"/>
