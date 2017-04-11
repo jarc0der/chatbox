@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Yeah! It's chatBox!</h3>
+	<h3>This is your area of comfort!</h3>
 	<form>
 		<input type="text" name="login"/>
 		<input type="password" name="pass"/>
@@ -15,4 +15,7 @@
 	</form>
 	<a href="reg.jsp">Registration</a>
 </body>
+<footer>
+	<p>YT &copy; 2017</p>
+</footer>
 </html>
