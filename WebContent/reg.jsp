@@ -7,12 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Yeah! It's chatBox!</h3>
 	<form>
-		<input type="text" name="login"/>
-		<input type="password" name="pass"/>
-		<button type="submit">Login</button>
+		Login: <input type="text" name="login"/>
+		Pass: <input type="password" name="pass"/>
+		<button type="submit">RegMe</button>
 	</form>
-	<a href="reg.jsp">Registration</a>
 </body>
 </html>
