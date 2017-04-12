@@ -3,8 +3,13 @@ package com.jarcode.auth.app;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
 
+import com.jarcode.auth.dao.IMessageDAO;
+import com.jarcode.auth.dao.MessageDAO;
 import com.jarcode.auth.dao.UserDAO;
+import com.jarcode.auth.entity.Message;
 import com.jarcode.auth.entity.User;
 
 public class App {
@@ -13,10 +18,30 @@ public class App {
 	private static String URL = "jdbc:mysql://localhost:3306/chatbox?useSSL=false";
 
 	public static void main(String[] args) throws SQLException {
+		Scanner sc = new Scanner(System.in);
 		Connection con = DriverManager.getConnection(URL, username, password);
 		UserDAO uDAO = new UserDAO(con);
-		User u = uDAO.getUser(1);
+		IMessageDAO mDAO = new MessageDAO(con);
 		
-		System.out.println(u);
+		System.out.println("Welcome to chatBOX");
+		System.out.println("I need your name \ntype>");
+		String uName = "";
+		
+		uName = sc.nextLine();
+		System.out.println("Typed name :" + uName);
+		displayMessages(mDAO);
+		
+		
 	}
+	
+	public static void displayMessages(IMessageDAO mDAO){
+		List<Message> mList = mDAO.getAllMessages();
+		
+		System.out.println("-------- box --------");
+		System.out.println("Messages: " + mList.size());
+		
+		mList.stream().forEach((e) -> System.out.println(e));
+		System.out.println("--------- end ----------");
+	}
+	
 }

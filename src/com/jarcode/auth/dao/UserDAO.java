@@ -20,12 +20,13 @@ public class UserDAO {
 		con = con2;
 	}
 
-	private void queryUser(String sql) throws SQLException {
-
-	}
-
-	public void addUser(String login, String pass) {
-
+	public void addUser(String login, String pass) throws SQLException {
+		con.setAutoCommit(false);
+		PreparedStatement stmt = con.prepareStatement("Insert into users(login, pass) values (?, ?)");
+		stmt.setString(1, login);
+		stmt.setString(2, pass);
+		stmt.executeUpdate();
+		con.commit();
 	}
 
 	public User getUser(int id) throws SQLException {
@@ -38,7 +39,18 @@ public class UserDAO {
 		return new User(rs.getInt(1), rs.getString(2), rs.getString(3));
 	}
 
-//	public List<User> getAllUsers() throws SQLException {
-//
-//	}
+	public List<User> getAllUsers() throws SQLException {
+		String sql = "SELECT * from users";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		
+		List<User> uList = new ArrayList<>();
+		
+		while(rs.next()){
+			uList.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3)));
+		}
+		
+		return uList;
+	}
+	
 }

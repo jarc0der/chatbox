@@ -3,13 +3,13 @@ package com.jarcode.auth.entity;
 public class Message {
 	
 	private int id;
-	private User user;
+	private int userId;
 	private String text;
 	
-	public Message(int id, User user, String text) {
+	public Message(int id, int uId, String text) {
 		super();
 		this.id = id;
-		this.user = user;
+		this.userId = uId;
 		this.text = text;
 	}
 
@@ -21,12 +21,12 @@ public class Message {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getText() {
@@ -39,7 +39,7 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", user=" + user + ", text=" + text + "]";
+		return "Message [id=" + id + ", user=" + userId + ", text=" + text + "]";
 	}
 	
 	
