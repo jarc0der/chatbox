@@ -25,12 +25,13 @@ public class App {
 		
 		System.out.println("Welcome to chatBOX");
 		System.out.println("I need your name \ntype>");
-		String uName = "";
+		String uName = "temp";
 		
-		uName = sc.nextLine();
+//		uName = sc.nextLine();
 		System.out.println("Typed name :" + uName);
 		displayMessages(mDAO);
 		
+		System.out.println(uDAO.loginRequest("yarik", "yarik"));
 		
 	}
 	

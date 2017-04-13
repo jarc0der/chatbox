@@ -53,4 +53,41 @@ public class UserDAO {
 		return uList;
 	}
 	
+	public boolean loginRequest(String login, String pass) throws SQLException{
+		if(userExists(login)){
+			return checkPassword(login, pass);
+		}else{
+			System.out.println("LoginReq. from " + login + " failed. User don't exists");
+			return false;
+		}
+	}
+	
+	public boolean userExists(String login) throws SQLException{
+		String sql = "select login from users where login = ?";
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, login);
+			rs = stmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return rs.next();
+	}
+	
+	public boolean checkPassword(String login, String pass) throws SQLException{
+		String sql = "select login from users where login = ? and pass = ?";
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		stmt = con.prepareStatement(sql);
+		stmt.setString(1, login);
+		stmt.setString(2, pass);
+		rs = stmt.executeQuery();
+		
+		return rs.next();
+	}
+	
 }
