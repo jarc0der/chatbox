@@ -7,21 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav>
-		<ul>
-			<li><a href="index.jsp">Home</a>
-			<li><a href="/logout">LogOut</a>
-		</ul>
-	</nav>
-	<h3>This is your area of comfort!</h3>
 	<form>
-		<input type="text" name="login"/>
-		<input type="password" name="pass"/>
-		<button type="submit">Login</button>
+		Login: <input type="text" name="login"/>
+		Pass: <input type="password" name="pass"/>
+		<button type="submit">RegMe</button>
 	</form>
-	<a href="reg.jsp">Registration</a>
 </body>
-<footer>
-	<p>YT &copy; 2017</p>
-</footer>
 </html>
