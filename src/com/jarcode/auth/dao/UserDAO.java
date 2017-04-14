@@ -62,7 +62,7 @@ public class UserDAO {
 		}
 	}
 	
-	public boolean userExists(String login) throws SQLException{
+	private boolean userExists(String login) throws SQLException{
 		String sql = "select login from users where login = ?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -77,7 +77,7 @@ public class UserDAO {
 		return rs.next();
 	}
 	
-	public boolean checkPassword(String login, String pass) throws SQLException{
+	private boolean checkPassword(String login, String pass) throws SQLException{
 		String sql = "select login from users where login = ? and pass = ?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;

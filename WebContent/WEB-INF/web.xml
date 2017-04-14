@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <filter>
+  <!--  <filter>
   	<filter-name>ContextF</filter-name>
   	<filter-class>com.jarcode.auth.filters.ContextAddFilter</filter-class>
   </filter>
@@ -19,5 +19,5 @@
   	<filter-name>ContextF</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping>
-  
+   -->
 </web-app>

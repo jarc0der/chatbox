@@ -9,29 +9,42 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-public class ContextAddFilter implements Filter{
+@WebFilter("/*")
+public class ContextAddFilter implements Filter {
 
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
 			throws IOException, ServletException {
-		System.out.println("Entered into filter");
-		arg0.setAttribute("user", "test");
-		System.out.println("Setted attribute");
+		HttpServletRequest req = (HttpServletRequest) arg0;
+		HttpSession session = (HttpSession) req.getSession();
+
+		String login = (String) session.getAttribute("login");
+
+		System.out.println("User with SID : " + session.getId());
+		if (login == null) {
+			System.out.println("is unloged");
+		}else{
+			System.out.println("he is logged");
+		}
+		
 		arg2.doFilter(arg0, arg1);
-		System.out.println("after doFilter()");
+
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

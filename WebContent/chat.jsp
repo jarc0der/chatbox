@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,20 +8,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>Hi %UserName%! Be free to write anythink ;)</h3>
+<h3>Hi <c:out value="${login}"/> Be free to write anythink ;)</h3>
 	<table>
 		<tr>
 			<th>From:</th>
 			<th>Message</th>
 		</tr>
+		<c:forEach var="msg" items="${mList}">
 		<tr>
-			<td>Yarik:</td>
-			<td>Hello!</td>
+			<td><c:out value="${msg.text}"/></td>
+			<td><c:out value="${msg.userId}"/></td>
 		</tr>
-		<tr>
-			<td>Vasil:</td>
-			<td>hi there!</td>
-		</tr>
+		</c:forEach>
 	</table>
 	<form>
 		<input type="text" name="msg"/>
