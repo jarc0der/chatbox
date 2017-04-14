@@ -20,7 +20,6 @@
 		<p>
 			<c:out value='${sessionScope.login}' />
 		</p>
-	<p>asd</p>
 	<form method="post" action="/auth">
 		<input type="text" name="login" /> <input type="password" name="pass" />
 		<button type="submit">Login</button>

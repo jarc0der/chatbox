@@ -19,13 +19,9 @@ public class LogoutServlet extends HttpServlet{
 			session.removeAttribute("login");
 			session.invalidate();
 		}
-		
+
 		System.out.println("session " + session.getId() + " is invalidated!");
-		
-		
 		resp.sendRedirect("/");
-		
-		//redirect to index
 	}
 	
 	
