@@ -21,7 +21,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<form>
+	<form method="post" action="">
 		<input type="text" name="msg"/>
 		<button type="submit">Send</button>
 	</form>

@@ -60,12 +60,11 @@ public class MessageDAO implements IMessageDAO {
 	@Override
 	public void insertMessage(int uId, String text) {
 		try {
-			PreparedStatement ps = con.prepareStatement("insert into messages(from, message) values (?, ?)");
+			PreparedStatement ps = con.prepareStatement("INSERT INTO `chatbox`.`messages` (`from`, `message`) VALUES (?, ?)");
 			ps.setInt(1, uId);
 			ps.setString(2, text);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
