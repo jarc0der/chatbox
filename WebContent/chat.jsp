@@ -17,11 +17,11 @@
 		<c:forEach var="msg" items="${mList}">
 		<tr>
 			<td><c:out value="${msg.text}"/></td>
-			<td><c:out value="${msg.userId}"/></td>
+			<td><c:out value="${msg.fromName}"/></td>
 		</tr>
 		</c:forEach>
 	</table>
-	<form method="post" action="">
+	<form method="post" action="/message">
 		<input type="text" name="msg"/>
 		<button type="submit">Send</button>
 	</form>
