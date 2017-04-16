@@ -29,16 +29,34 @@ public class UserDAO {
 		con.commit();
 	}
 
-	public User getUser(int id) throws SQLException {
-		String sql = "SELECT * from users where id = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, id);
-		ResultSet rs = ps.executeQuery();
+	public User getUser(String sql){
+		Statement ps = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			ps = con.createStatement();
+			rs = ps.executeQuery(sql);
+			rs.next();
+			int id = rs.getInt(1);
+			String login =  rs.getString(2);
+			String pass = rs.getString(3);
+			user = new User(id, login, pass);
+		} catch (SQLException e) {
+			// TODO: Exception!
+			e.printStackTrace();
+		}
 		
-		rs.next();
-		return new User(rs.getInt(1), rs.getString(2), rs.getString(3));
+		return user;
 	}
 
+	public User getUserByID(int id){
+		return getUser("SELECT * from users where id = "+id+"");
+	}
+	
+	public User getUserByLogin(String login){
+		return getUser("SELECT * from users where login = '"+login+"'");
+	}
+	
 	public List<User> getAllUsers() throws SQLException {
 		String sql = "SELECT * from users";
 		Statement stmt = con.createStatement();
