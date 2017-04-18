@@ -20,9 +20,6 @@ public class App {
 
 	public static void main(String[] args) throws SQLException {
 		
-		MessageAssembler msgAssm = new MessageAssembler();
-		System.out.println(msgAssm.getAllMessagesDTO());
-		
 	}
 	
 }

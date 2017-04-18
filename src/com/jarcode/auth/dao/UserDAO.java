@@ -80,7 +80,7 @@ public class UserDAO {
 		}
 	}
 	
-	private boolean userExists(String login) throws SQLException{
+	public boolean userExists(String login) throws SQLException{
 		String sql = "select login from users where login = ?";
 		PreparedStatement stmt = null;
 		ResultSet rs = null;

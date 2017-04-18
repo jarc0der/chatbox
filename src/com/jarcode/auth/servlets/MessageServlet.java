@@ -21,18 +21,14 @@ public class MessageServlet extends HttpServlet{
 		String text = req.getParameter("msg");
 		System.out.println("Add message");
 	
-		//TODO: User's ID in Sessio
 		int uId = (int) req.getSession().getAttribute("uID");
-		System.out.println(uId);
 		
 		MessageDAO mDAO = new MessageDAO(ConnectionPool.getConnection());
-		
 		mDAO.insertMessage(uId, text);
 		
 		resp.sendRedirect("/chat");
 		return;
 	}
 
-	
 	
 }

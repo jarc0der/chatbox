@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form>
+	<form method="post" action="/reg">
 		Login: <input type="text" name="login"/>
 		Pass: <input type="password" name="pass"/>
 		<button type="submit">RegMe</button>

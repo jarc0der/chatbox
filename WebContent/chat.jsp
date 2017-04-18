@@ -1,30 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Chat|Box 1.0</title>
 </head>
 <body>
-<h3>Hi <c:out value="${login}"/> Be free to write anythink ;)</h3>
-	<table>
-		<tr>
-			<th>From:</th>
-			<th>Message</th>
-		</tr>
-		<c:forEach var="msg" items="${mList}">
-		<tr>
-			<td><c:out value="${msg.text}"/></td>
-			<td><c:out value="${msg.fromName}"/></td>
-		</tr>
-		</c:forEach>
-	</table>
-	<form method="post" action="/message">
-		<input type="text" name="msg"/>
-		<button type="submit">Send</button>
-	</form>
-	
+	<header>
+		<%@ include file="/pages/header.jspf"%>
+	</header>
+	<div class="content">
+		<%@ include file="/pages/chat.jspf"%>
+	</div>
 </body>
+<footer>
+	<%@ include file="/pages/footer.jspf"%>
+</footer>
 </html>
