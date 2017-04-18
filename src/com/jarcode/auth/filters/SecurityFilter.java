@@ -11,10 +11,11 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter("/*")
-public class ContextAddFilter implements Filter {
+@WebFilter("/chat")
+public class SecurityFilter implements Filter {
 
 	@Override
 	public void destroy() {
@@ -23,27 +24,29 @@ public class ContextAddFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) arg0;
+		HttpServletResponse resp = (HttpServletResponse) arg1;
 		HttpSession session = (HttpSession) req.getSession();
-
-		String login = (String) session.getAttribute("login");
-
-		System.out.println("User with SID : " + session.getId());
-		if (login == null) {
-			System.out.println("is unloged");
+		String path = req.getRequestURI();
+		String user = (String)session.getAttribute("login");
+		
+		System.out.println(path);
+		
+		if(user == null){
+			System.out.println("Block");
+			resp.sendRedirect("/");
 		}else{
-			System.out.println("he is logged");
+			chain.doFilter(arg0, arg1);
 		}
 		
-		arg2.doFilter(arg0, arg1);
-
+		
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
+		// TODO : init filter
 
 	}
 

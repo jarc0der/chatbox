@@ -4,10 +4,10 @@
 
 <nav>
 	<ul>
-		<li><a href="index.jsp">Home</a> <c:if
-				test="${sessionScope.login != null }">
-				<li><a href="logout">LogOut</a>
-			</c:if>
+		<li><a href="index.jsp">Home</a>
 		<li><a href="/reg">Registration</a></li>
+		<c:if test="${sessionScope.login != null }">
+			<li><a href="logout">LogOut</a>
+		</c:if>
 	</ul>
 </nav>
