@@ -7,6 +7,7 @@
 	<c:out value="${login}" />
 	Be free to write anythink ;)
 </h3>
+
 <table>
 	<tr>
 		<th>From:</th>
@@ -14,8 +15,10 @@
 	</tr>
 	<c:forEach var="msg" items="${mList}">
 		<tr>
-			<td><c:out value="${msg.text}" /></td>
-			<td><c:out value="${msg.fromName}" /></td>
+			<td style="color: ${msg.color}"><c:out value="${msg.fromName} :" /></td>
+			<td><c:if test="${role == 2 }">
+					<a href="/remove?id=${msg.id }">x</a>
+				</c:if> <c:out value="${msg.text}" /></td>
 		</tr>
 	</c:forEach>
 </table>

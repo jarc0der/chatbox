@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.jarcode.auth.dao.ConnectionPool;
 import com.jarcode.auth.dao.IMessageDAO;
 import com.jarcode.auth.dao.MessageDAO;
 import com.jarcode.auth.dao.UserDAO;
@@ -19,7 +20,8 @@ public class App {
 	private static String URL = "jdbc:mysql://localhost:3306/chatbox?useSSL=false";
 
 	public static void main(String[] args) throws SQLException {
-		
+		List<User> uList = new UserDAO(ConnectionPool.getConnection()).getAllUsers();
+		System.out.println(uList);
 	}
 	
 }

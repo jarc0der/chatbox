@@ -20,11 +20,12 @@ public class UserDAO {
 		con = con2;
 	}
 
-	public void addUser(String login, String pass) throws SQLException {
+	public void addUser(String login, String pass, String email) throws SQLException {
 		con.setAutoCommit(false);
-		PreparedStatement stmt = con.prepareStatement("Insert into users(login, pass) values (?, ?)");
+		PreparedStatement stmt = con.prepareStatement("Insert into users(login, pass, email) values (?, ?, ?)");
 		stmt.setString(1, login);
 		stmt.setString(2, pass);
+		stmt.setString(3, pass);
 		stmt.executeUpdate();
 		con.commit();
 	}
@@ -40,7 +41,11 @@ public class UserDAO {
 			int id = rs.getInt(1);
 			String login =  rs.getString(2);
 			String pass = rs.getString(3);
-			user = new User(id, login, pass);
+			String email = rs.getString(4);
+			String color = rs.getString(5);
+			int roleId = rs.getInt(6);
+			int ban = rs.getInt(7);
+			user = new User(id, login, pass, email, color, roleId, ban);
 		} catch (SQLException e) {
 			// TODO: Exception!
 			e.printStackTrace();
@@ -65,7 +70,7 @@ public class UserDAO {
 		List<User> uList = new ArrayList<>();
 		
 		while(rs.next()){
-			uList.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3)));
+			uList.add(new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
 		}
 		
 		return uList;
@@ -75,7 +80,6 @@ public class UserDAO {
 		if(userExists(login)){
 			return checkPassword(login, pass);
 		}else{
-			System.out.println("LoginReq. from " + login + " failed. User don't exists");
 			return false;
 		}
 	}

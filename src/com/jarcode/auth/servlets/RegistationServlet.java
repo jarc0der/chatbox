@@ -24,16 +24,14 @@ public class RegistationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String login = req.getParameter("login");
 		String pass = req.getParameter("pass");
-		System.out.println("POST");
+		String email = req.getParameter("email");
 		
 		UserDAO uDAO = new UserDAO(ConnectionPool.getConnection());
 		try {
 			if(!uDAO.userExists(login)){
-				System.out.println("I add user " + login + " : " + pass);
-				uDAO.addUser(login, pass);
+				uDAO.addUser(login, pass, email);
 				resp.sendRedirect("/chat");
 			}else{
-				System.out.println("error user exist");
 				resp.sendRedirect("/reg");
 			}
 		} catch (SQLException e) {

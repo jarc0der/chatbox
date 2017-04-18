@@ -3,15 +3,18 @@ package com.jarcode.auth.dto;
 public class MessageDTO {
 	private int id;
 	private String fromName;
+	private String color;
 	private String text;
 
-	public MessageDTO(){};
-	
-	public MessageDTO(int id, String fromName, String text) {
+	public MessageDTO() {
+	};
+
+	public MessageDTO(int id, String fromName, String color, String text) {
 		super();
 		this.id = id;
 		this.fromName = fromName;
 		this.text = text;
+		this.color = color;
 	}
 
 	public int getId() {
@@ -38,11 +41,17 @@ public class MessageDTO {
 		this.text = text;
 	}
 
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	@Override
 	public String toString() {
 		return "MessageDTO [id=" + id + ", fromName=" + fromName + ", text=" + text + "]";
 	}
-	
-	
 
 }

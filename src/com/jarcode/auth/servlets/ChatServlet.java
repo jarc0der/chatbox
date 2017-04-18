@@ -21,15 +21,18 @@ public class ChatServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String login = (String) req.getSession().getAttribute("login");
+		int roleId = (int) req.getSession().getAttribute("role");
 		MessageAssembler mDAO = new MessageAssembler();
 		try {
 			List<MessageDTO> mList = mDAO.getAllMessagesDTO();
 			req.setAttribute("mList", mList);
 			req.setAttribute("login", login);
+			req.setAttribute("role", roleId);
+			
 			req.getRequestDispatcher("/chat.jsp").forward(req, resp);
 
-		} finally {
-			System.out.println("Hello from chat servlet");
+		} catch(Exception ex){
+			ex.printStackTrace();
 		}
 	}
 

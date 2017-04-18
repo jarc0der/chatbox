@@ -19,7 +19,7 @@ public class MessageAssembler {
 		Message msg = mDAO.getMessage(id);
 		User user = uDAO.getUserByID(msg.getUserId());
 
-		return new MessageDTO(msg.getId(), user.getLogin(), msg.getText());
+		return new MessageDTO(msg.getId(), user.getLogin(), msg.getText(), user.getColor());
 	}
 
 	public List<MessageDTO> getAllMessagesDTO() {
@@ -31,10 +31,10 @@ public class MessageAssembler {
 		for (Message msg : mList) {
 			MessageDTO msgDTO = new MessageDTO();
 			User user = uDAO.getUserByID(msg.getUserId());
-			System.out.println(user);
 			msgDTO.setId(msg.getId());
 			msgDTO.setFromName(user.getLogin());
 			msgDTO.setText(msg.getText());
+			msgDTO.setColor(user.getColor());
 			mDTOList.add(msgDTO);
 		}
 

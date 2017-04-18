@@ -29,13 +29,11 @@ public class SecurityFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) arg0;
 		HttpServletResponse resp = (HttpServletResponse) arg1;
 		HttpSession session = (HttpSession) req.getSession();
-		String path = req.getRequestURI();
+
 		String user = (String)session.getAttribute("login");
-		
-		System.out.println(path);
-		
-		if(user == null){
-			System.out.println("Block");
+		Integer banLevel = (Integer)session.getAttribute("banLevel");
+
+		if(user == null && (banLevel == null || banLevel > 0) ){
 			resp.sendRedirect("/");
 		}else{
 			chain.doFilter(arg0, arg1);

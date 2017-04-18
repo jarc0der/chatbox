@@ -19,7 +19,6 @@ public class MessageServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//TODO: validate message
 		String text = req.getParameter("msg");
-		System.out.println("Add message");
 	
 		int uId = (int) req.getSession().getAttribute("uID");
 		
