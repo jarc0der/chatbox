@@ -5,28 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Chat|Box 1.0</title>
 </head>
 <body>
-	<nav>
-		<ul>
-			<li><a href="index.jsp">Home</a> 
-			<c:if test="${sessionScope.login != null }">
-				<li><a href="logout">LogOut</a>
-			</c:if>
-		</ul>
-	</nav>
-	<h3>This is your area of comfort!</h3>
-		<p>
-			<c:out value='${sessionScope.login}' />
-		</p>
-	<form method="post" action="/auth">
-		<input type="text" name="login" /> <input type="password" name="pass" />
-		<button type="submit">Login</button>
-	</form>
-	<a href="reg.jsp">Registration</a>
+	<header>
+		<%@ include file="/pages/header.jspf"%>
+	</header>
+	<div class="content">
+		<%@ include file="/pages/main.jspf"%>
+	</div>
 </body>
 <footer>
-	<p>YT &copy; 2017</p>
+	<%@ include file="/pages/footer.jspf"%>
 </footer>
 </html>
