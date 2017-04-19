@@ -17,7 +17,7 @@
 		<tr>
 			<td style="color: ${msg.color}"><c:out value="${msg.fromName} :" /></td>
 			<td><c:if test="${role == 2 }">
-					<a href="/remove?id=${msg.id }">x</a>
+					<a href="admin/msg/remove?id=${msg.id }">x</a>
 				</c:if> <c:out value="${msg.text}" /></td>
 		</tr>
 	</c:forEach>

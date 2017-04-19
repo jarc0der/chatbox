@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.jarcode.auth.dao.ConnectionPool;
 import com.jarcode.auth.dao.UserDAO;
+import com.jarcode.auth.enums.SystemMessage;
 
 @WebServlet("/reg")
 public class RegistationServlet extends HttpServlet {
@@ -27,19 +29,26 @@ public class RegistationServlet extends HttpServlet {
 		String email = req.getParameter("email");
 		
 		UserDAO uDAO = new UserDAO(ConnectionPool.getConnection());
+		SystemMessage sysMsg = null;
 		try {
 			if(!uDAO.userExists(login)){
 				uDAO.addUser(login, pass, email);
 				resp.sendRedirect("/chat");
+				sysMsg = new SystemMessage("SUCCESS", "Registration successful!");
 			}else{
+				sysMsg = new SystemMessage("WARN", "User with this login already exists!");
 				resp.sendRedirect("/reg");
 			}
 		} catch (SQLException e) {
 			// TODO Exception
 			e.printStackTrace();
+		} finally{
+			setAttribute(sysMsg, req.getSession());
 		}
 	}
 
-	
+	private void setAttribute(SystemMessage msg, HttpSession s){
+		s.setAttribute("msg", msg);
+	}
 	
 }

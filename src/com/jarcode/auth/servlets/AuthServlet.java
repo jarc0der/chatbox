@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.jarcode.auth.dao.ConnectionPool;
 import com.jarcode.auth.dao.UserDAO;
 import com.jarcode.auth.entity.User;
+import com.jarcode.auth.enums.SystemMessage;
 
 @WebServlet("/auth")
 public class AuthServlet extends HttpServlet{
@@ -23,6 +24,7 @@ public class AuthServlet extends HttpServlet{
 		String login = req.getParameter("login");
 		String pass = req.getParameter("pass");
 		User user = null;
+		SystemMessage sysMsg = null;
 		
 		boolean result = false;
 		try {
@@ -35,10 +37,14 @@ public class AuthServlet extends HttpServlet{
 		if(result){
 			user = uDAO.getUserByLogin(login);
 			setSessionAttr(user, req.getSession());
+			resp.sendRedirect("/chat");
 		}else{
-			System.out.println("bad data");
+			sysMsg = new SystemMessage("WARN", "Sorry! Check your login and password");
+			req.getSession().setAttribute("msg", sysMsg);
+			resp.sendRedirect("/");
+			
 		}
-		resp.sendRedirect("/chat");
+		
 	}
 	
 	private void setSessionAttr(User u, HttpSession s){

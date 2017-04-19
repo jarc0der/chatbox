@@ -34,7 +34,7 @@ public class SecurityFilter implements Filter {
 		Integer banLevel = (Integer)session.getAttribute("banLevel");
 
 		if(user == null && (banLevel == null || banLevel > 0) ){
-			resp.sendRedirect("/");
+			resp.sendRedirect("/reg");
 		}else{
 			chain.doFilter(arg0, arg1);
 		}

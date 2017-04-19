@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.jarcode.auth.dao.ConnectionPool;
-import com.jarcode.auth.dao.MessageDAO;
 import com.jarcode.auth.dto.MessageDTO;
-import com.jarcode.auth.entity.Message;
 import com.jarcode.auth.remote.MessageAssembler;
 
 @WebServlet("/chat")
