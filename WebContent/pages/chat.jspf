@@ -6,6 +6,9 @@
 	Hi
 	<c:out value="${login}" />
 	Be free to write anythink ;)
+	<p>
+		Your role is:
+		<c:out value="${role}" />
 </h3>
 
 <table>
@@ -14,12 +17,21 @@
 		<th>Message</th>
 	</tr>
 	<c:forEach var="msg" items="${mList}">
-		<tr>
-			<td style="color: ${msg.color}"><c:out value="${msg.fromName} :" /></td>
-			<td><c:if test="${role == 2 }">
-					<a href="admin/msg/remove?id=${msg.id }">x</a>
-				</c:if> <c:out value="${msg.text}" /></td>
-		</tr>
+		<c:if test="${msg.block == 0 }">
+			<tr>
+				<td style="color: ${msg.color}"><c:out
+						value="${msg.fromName} :" /></td>
+				<td><c:choose>
+						<c:when test="${role == 2 }">
+							<a href="admin/msg/remove?id=${msg.id}">x</a>
+						</c:when>
+						<c:when test="${login == msg.fromName }">
+							<a href="message?id=${msg.id }">x</a>
+						</c:when>
+					</c:choose>
+					<c:out value="${msg.text}" /> Time: <c:out value="${msg.time}"></c:out></td>
+			</tr>
+		</c:if>
 	</c:forEach>
 </table>
 <form method="post" action="/message">

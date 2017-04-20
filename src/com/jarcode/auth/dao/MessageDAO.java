@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jarcode.auth.entity.Message;
+import com.jarcode.auth.utils.DateTimeUtils;
 
 public class MessageDAO implements IMessageDAO {
 
@@ -28,7 +29,7 @@ public class MessageDAO implements IMessageDAO {
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			rs.next();
-			msg = new Message(rs.getInt(1), rs.getInt(2), rs.getString(3));
+			msg = new Message(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5));
 		} catch (SQLException e) {
 			// TODO: Close connection and ps
 			e.printStackTrace();
@@ -48,7 +49,11 @@ public class MessageDAO implements IMessageDAO {
 			rs = st.executeQuery("select * from messages");
 
 			while(rs.next()){
-				mList.add(new Message(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+				mList.add(new Message(rs.getInt(1), 
+						rs.getInt(2), 
+						rs.getString(3), 
+						rs.getString(4), 
+						rs.getInt(5)));
 			}
 		} catch (SQLException e) {
 			// TODO Close all
@@ -58,13 +63,27 @@ public class MessageDAO implements IMessageDAO {
 	}
 
 	@Override
-	public void insertMessage(int uId, String text) {
+	public void insertMessage(int uId, String text, String timestamp, int block) {
 		try {
-			PreparedStatement ps = con.prepareStatement("INSERT INTO `chatbox`.`messages` (`from`, `text`) VALUES (?, ?)");
+			PreparedStatement ps = con.prepareStatement("INSERT INTO `chatbox`.`messages` (`from`, `text`, `time`, `block`) VALUES (?, ?, ?, ?)");
 			ps.setInt(1, uId);
 			ps.setString(2, text);
+			ps.setString(3, timestamp);
+			ps.setInt(4, block);
 			ps.executeUpdate();
 		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void blockMessage(int id){
+		String sql = "UPDATE messages SET block = 1 WHERE id = ?";
+		try {
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Exception message
 			e.printStackTrace();
 		}
 	}

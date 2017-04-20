@@ -5,12 +5,16 @@ public class Message {
 	private int id;
 	private int userId;
 	private String text;
+	private String timestamp;
+	private int block;
 	
-	public Message(int id, int uId, String text) {
+	public Message(int id, int userId, String text, String timestamp, int block) {
 		super();
 		this.id = id;
-		this.userId = uId;
+		this.userId = userId;
 		this.text = text;
+		this.timestamp = timestamp;
+		this.block = block;
 	}
 
 	public int getId() {
@@ -37,10 +41,28 @@ public class Message {
 		this.text = text;
 	}
 
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	public int getBlock() {
+		return block;
+	}
+
+	public void setBlock(int block) {
+		this.block = block;
+	}
+
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", user=" + userId + ", text=" + text + "]";
+		return "Message [id=" + id + ", userId=" + userId + ", text=" + text + ", timestamp=" + timestamp + ", block="
+				+ block + "]";
 	}
+
 	
 	
 }

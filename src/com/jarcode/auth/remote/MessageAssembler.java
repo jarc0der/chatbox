@@ -9,6 +9,7 @@ import com.jarcode.auth.dao.UserDAO;
 import com.jarcode.auth.dto.MessageDTO;
 import com.jarcode.auth.entity.Message;
 import com.jarcode.auth.entity.User;
+import com.jarcode.auth.utils.DateTimeUtils;
 
 public class MessageAssembler {
 
@@ -19,7 +20,7 @@ public class MessageAssembler {
 		Message msg = mDAO.getMessage(id);
 		User user = uDAO.getUserByID(msg.getUserId());
 
-		return new MessageDTO(msg.getId(), user.getLogin(), msg.getText(), user.getColor());
+		return new MessageDTO(msg.getId(), user.getLogin(), msg.getText(), user.getColor(), DateTimeUtils.convertStampToDate(msg.getTimestamp()), msg.getBlock());
 	}
 
 	public List<MessageDTO> getAllMessagesDTO() {
@@ -35,6 +36,8 @@ public class MessageAssembler {
 			msgDTO.setFromName(user.getLogin());
 			msgDTO.setText(msg.getText());
 			msgDTO.setColor(user.getColor());
+			msgDTO.setTime(DateTimeUtils.convertStampToDate(msg.getTimestamp()));
+			msgDTO.setBlock(msg.getBlock());
 			mDTOList.add(msgDTO);
 		}
 
