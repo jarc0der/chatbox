@@ -1,0 +1,97 @@
+body{
+    color: #f2f2f2;
+}
+
+.chatbox{
+    background-color: azure;
+    min-height: 400px;
+}
+
+.leftbox{
+    background-color: #232a32;
+    padding: 0;
+    margin: 0;
+}
+
+.rightbox{
+    background-color: #f2f2f2;
+    min-height: 400px;
+}
+
+/* LEFT BOX */
+.onecontact{
+    height: 50px;
+    border-bottom: 1px solid white;
+}
+
+.contactbox{
+
+}
+
+.scroll-contacts {
+height: 400px; /* высота нашего блока */
+/*width: 200px;  ширина нашего блока */
+/*background: #fff;  цвет фона, белый */
+border: 1px solid #C1C1C1; /* размер и цвет границы блока */
+overflow-x: auto; /* прокрутка по горизонтали */
+overflow-y: scroll; /* прокрутка по вертикали */
+}
+
+.scroll-messages {
+height: 400px; /* высота нашего блока */
+/*width: 200px;  ширина нашего блока */
+/*background: #fff;  цвет фона, белый */
+border: 1px solid #C1C1C1; /* размер и цвет границы блока */
+overflow-x: auto; /* прокрутка по горизонтали */
+overflow-y: scroll; /* прокрутка по вертикали */
+}
+
+.message{
+    border: 1px solid yellow;
+    padding: 10px;
+    max-width: 75%;
+    margin-bottom: 5px;
+    font-family:-apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,sans-serif;
+	font-size:13px;
+}
+
+
+.friend{
+    background-color: #FFFFFF;
+    color: #000000;
+    float:left;
+}
+
+.self{
+    background-color: #56469e;
+    float: right;
+}
+
+.clear{
+    clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
