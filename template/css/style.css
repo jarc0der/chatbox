@@ -5,7 +5,7 @@ body{
 .chatbox{
     background-color: azure;
     min-height: 400px;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .leftbox{
@@ -56,12 +56,25 @@ overflow-y: scroll; /* прокрутка по вертикали */
 }
 
 .message{
-    border: 1px solid yellow;
+    
     padding: 10px;
     max-width: 75%;
     margin-bottom: 5px;
     font-family:-apple-system,BlinkMacSystemFont,Roboto,Open Sans,Helvetica Neue,sans-serif;
 	font-size:13px;
+}
+
+.message-data{
+    font-size: 11px;
+    color: cadetblue;
+}
+
+.remove{
+    display: block;
+    float: right;
+    color: red;
+    margin-left: 10px;
+    line-height: 80%;
 }
 
 

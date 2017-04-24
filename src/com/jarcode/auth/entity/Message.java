@@ -6,9 +6,10 @@ public class Message {
 	private int userId;
 	private String text;
 	private String timestamp;
+	private int convId;
 	private int block;
 	
-	public Message(int id, int userId, String text, String timestamp, int block) {
+	public Message(int id, int userId, String text, String timestamp, int convId, int block) {
 		super();
 		this.id = id;
 		this.userId = userId;
@@ -55,6 +56,15 @@ public class Message {
 
 	public void setBlock(int block) {
 		this.block = block;
+	}
+	
+
+	public int getConvId() {
+		return convId;
+	}
+
+	public void setConvId(int convId) {
+		this.convId = convId;
 	}
 
 	@Override

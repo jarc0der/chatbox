@@ -9,5 +9,8 @@ public interface IMessageDAO {
 	
 	public List<Message> getAllMessages();
 	
-	public void insertMessage(int uId, String text, String timestamp, int block);
+	public void insertMessage(int uId, String text, String timestamp, int convId, int block);
+
+	List<Message> getConversationMsgs(int id);
+
 }
