@@ -5,6 +5,7 @@ body{
 .chatbox{
     background-color: azure;
     min-height: 400px;
+    margin-top: 200px;
 }
 
 .leftbox{
@@ -32,7 +33,6 @@ body{
 height: 400px; /* высота нашего блока */
 /*width: 200px;  ширина нашего блока */
 /*background: #fff;  цвет фона, белый */
-border: 1px solid #C1C1C1; /* размер и цвет границы блока */
 overflow-x: auto; /* прокрутка по горизонтали */
 overflow-y: scroll; /* прокрутка по вертикали */
 }
@@ -44,6 +44,15 @@ height: 400px; /* высота нашего блока */
 border: 1px solid #C1C1C1; /* размер и цвет границы блока */
 overflow-x: auto; /* прокрутка по горизонтали */
 overflow-y: scroll; /* прокрутка по вертикали */
+}
+
+.messagebox{
+    border: none;
+}
+
+.sendmessage{
+    padding: 10px;
+    color: #000000;
 }
 
 .message{
