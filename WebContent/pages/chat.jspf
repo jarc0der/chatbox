@@ -7,8 +7,10 @@
 	<c:out value="${login}" />
 	Be free to write anythink ;)
 	<p>
-		Your role is:
-		<c:out value="${role}" />
+	<p>Conversations</p>
+	<c:forEach  var="conv" items="${cList}">
+		<a href="/chat?id=${conv.id }">${conv.name }</a> 
+	</c:forEach>
 </h3>
 
 <table>
@@ -35,6 +37,7 @@
 	</c:forEach>
 </table>
 <form method="post" action="/message">
+	<input type="hidden" name="convId" value=""/>
 	<input type="text" name="msg" />
 	<button type="submit">Send</button>
 </form>

@@ -1,0 +1,1 @@
+SELECT * FROM chatbox.messages;

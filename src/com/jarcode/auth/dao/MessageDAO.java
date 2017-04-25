@@ -88,7 +88,7 @@ public class MessageDAO implements IMessageDAO {
 	}
 
 	@Override
-	public List<Message> getConversationMsgs(int id) {
+	public List<Message> getMessagesByConvId(int id) {
 		List<Message> msgList = new ArrayList<>();
 		String sql = "Select * from messages where conv_id = ?";
 
@@ -98,7 +98,12 @@ public class MessageDAO implements IMessageDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				msgList.add(new Message(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4), rs.getInt(5),
+				msgList.add(new Message(
+						rs.getInt(1), 
+						rs.getInt(2), 
+						rs.getString(3), 
+						rs.getString(4), 
+						rs.getInt(5),
 						rs.getInt(6)));
 			}
 		} catch (SQLException e) {

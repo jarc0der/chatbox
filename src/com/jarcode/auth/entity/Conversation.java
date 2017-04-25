@@ -7,6 +7,8 @@ public class Conversation {
 	private int friend;
 	private int isActive;
 
+	public Conversation(){}
+	
 	public Conversation(int id, String name, int owner, int friend, int isActive) {
 		super();
 		this.id = id;

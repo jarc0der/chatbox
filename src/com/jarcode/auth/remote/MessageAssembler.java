@@ -44,6 +44,28 @@ public class MessageAssembler {
 		return mDTOList;
 
 	}
+	
+	public List<MessageDTO> getAllMessagesByConvID(int id) {
+		UserDAO uDAO = new UserDAO(ConnectionPool.getConnection());
+		MessageDAO mDAO = new MessageDAO(ConnectionPool.getConnection());
+		List<Message> mList = mDAO.getMessagesByConvId(id);
+		List<MessageDTO> mDTOList = new ArrayList<>();
+
+		for (Message msg : mList) {
+			MessageDTO msgDTO = new MessageDTO();
+			User user = uDAO.getUserByID(msg.getUserId());
+			msgDTO.setId(msg.getId());
+			msgDTO.setFromName(user.getLogin());
+			msgDTO.setText(msg.getText());
+			msgDTO.setColor(user.getColor());
+			msgDTO.setTime(DateTimeUtils.convertStampToDate(msg.getTimestamp()));
+			msgDTO.setBlock(msg.getBlock());
+			mDTOList.add(msgDTO);
+		}
+
+		return mDTOList;
+
+	}
 
 	public void updateMessageDTO(int id, MessageDTO msgDTO) {
 		throw new UnsupportedOperationException();

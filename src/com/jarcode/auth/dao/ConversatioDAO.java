@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jarcode.auth.entity.Conversation;
 import com.jarcode.auth.entity.Message;
 
 public class ConversatioDAO implements IConversationDAO {
@@ -18,9 +20,30 @@ public class ConversatioDAO implements IConversationDAO {
 		this.con = con;
 	}
 
+	public Conversation getConvById(int id){
+		String sql = "select * from conversations where id = ?";
+		Conversation conv = null;
+		
+		try{
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			conv = new Conversation(rs.getInt(1),
+					rs.getString(2),
+					rs.getInt(3),
+					rs.getInt(4),
+					rs.getInt(5));
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return conv;
+	}
+	
 	@Override
 	public void createConversation(String name, int owner, int friend) {
-		String sql = "INSERT INTO conversation(name, owner, friend) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO conversations(name, owner, friend) VALUES (?, ?, ?, ?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, name);
@@ -33,6 +56,23 @@ public class ConversatioDAO implements IConversationDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Conversation> getAllConv(){
+		String sql = "select * from conversations";
+		List<Conversation> cList = new ArrayList<>();
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				cList.add(new Conversation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cList;
 	}
 
 	@Override
