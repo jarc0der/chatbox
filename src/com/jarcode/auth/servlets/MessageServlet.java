@@ -38,16 +38,17 @@ public class MessageServlet extends HttpServlet{
 		String text = req.getParameter("msg");
 		int uId = (int) req.getSession().getAttribute("uID");
 		String timestamp = DateTimeUtils.getCurTimeStamp();
-		int convId = Integer.getInteger(req.getParameter("convId"));
+		String convId = req.getParameter("convId");
 		
 		//0 - is default value
 		int block = 0;
+		int convID = Integer.valueOf(convId);
 		
 		MessageDAO mDAO = new MessageDAO(ConnectionPool.getConnection());
 		
 
 		//TODO set convId value
-		mDAO.insertMessage(uId, text, timestamp, 1, block);
+		mDAO.insertMessage(uId, text, timestamp, convID, block);
 		
 		resp.sendRedirect("/chat");
 		return;

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jarcode.auth.dao.ConnectionPool;
 import com.jarcode.auth.dao.ConversatioDAO;
+import com.jarcode.auth.dto.ConversationDTO;
 import com.jarcode.auth.dto.MessageDTO;
 import com.jarcode.auth.entity.Conversation;
+import com.jarcode.auth.remote.ConversationAssembler;
 import com.jarcode.auth.remote.MessageAssembler;
 
 @WebServlet("/chat")
@@ -22,30 +24,30 @@ public class ChatServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String login = (String) req.getSession().getAttribute("login");
 		int roleId = (int) req.getSession().getAttribute("role");
-		//this is for conversation ID /chat?id=1
-		int convId = 2;
-		
-		
-		System.out.println("convID = " + convId);
+		//get convId from user session
+		String convId = (String)req.getSession().getAttribute("convId");
+		int uid  = (Integer)req.getSession().getAttribute("uID");
+		System.out.println("user ID : " + uid);
 		
 		MessageAssembler mDAO = new MessageAssembler();
-		ConversatioDAO convDAO = new ConversatioDAO(ConnectionPool.getConnection());
+		ConversationAssembler convDTO = new ConversationAssembler();
 		List<MessageDTO> mList = null;
 		
-		if(convId > 0){
-			System.out.println("Generate conv msg list with id " + convId);
-			mList = mDAO.getAllMessagesByConvID(convId);
+		List<ConversationDTO> cList = convDTO.getUsersConvById(uid);
+		
+		//check if cList size not bigger than convID
+		if(convId != null){
+			System.out.println("GET ADD MESSAGES");
+			int id = Integer.valueOf(convId);
+//			req.setAttribute("currentConv", id);
+			mList = mDAO.getAllMessagesByConvID(id);
 		}else{
-			System.out.println("Generete all msgs");
 			mList = mDAO.getAllMessagesDTO();
 		}
-		try {
-
+		try {			
 			
-			List<Conversation> cList = convDAO.getAllConv();
-			
-			req.setAttribute("mList", mList);
-			req.setAttribute("cList", cList);
+			req.setAttribute("mList", mList); //messages list
+			req.setAttribute("cList", cList); //conversation list
 			req.setAttribute("login", login);
 			req.setAttribute("role", roleId);
 			

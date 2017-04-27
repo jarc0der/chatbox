@@ -41,6 +41,25 @@ public class ConversatioDAO implements IConversationDAO {
 		return conv;
 	}
 	
+	public List<Conversation> getUserConverByID(int uid){
+		String sql = "Select * from conversations where owner_id = ? or friend_id = ?";
+		List<Conversation> cList = new ArrayList<>();
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, uid);
+			stmt.setInt(2, uid);
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()){
+				cList.add(new Conversation(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return cList;
+	}
+	
 	@Override
 	public void createConversation(String name, int owner, int friend) {
 		String sql = "INSERT INTO conversations(name, owner, friend) VALUES (?, ?, ?, ?)";

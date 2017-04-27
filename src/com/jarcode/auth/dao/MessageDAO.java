@@ -63,7 +63,7 @@ public class MessageDAO implements IMessageDAO {
 	public void insertMessage(int uId, String text, String timestamp, int convId, int block) {
 		try {
 			PreparedStatement ps = con.prepareStatement(
-					"INSERT INTO `chatbox`.`messages` (`from`, `text`, `time`, `block`) VALUES (?, ?, ?, ?)");
+					"INSERT INTO `chatbox`.`messages` (`from`, `text`, `time`, `conv_id`, `block`) VALUES (?, ?, ?, ?, ?)");
 			ps.setInt(1, uId);
 			ps.setString(2, text);
 			ps.setString(3, timestamp);

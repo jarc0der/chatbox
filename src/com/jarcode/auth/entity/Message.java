@@ -15,6 +15,7 @@ public class Message {
 		this.userId = userId;
 		this.text = text;
 		this.timestamp = timestamp;
+		this.convId = convId;
 		this.block = block;
 	}
 
@@ -69,9 +70,11 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [id=" + id + ", userId=" + userId + ", text=" + text + ", timestamp=" + timestamp + ", block="
-				+ block + "]";
+		return "Message [id=" + id + ", userId=" + userId + ", text=" + text + ", timestamp=" + timestamp + ", convId="
+				+ convId + ", block=" + block + "]";
 	}
+
+
 
 	
 	
