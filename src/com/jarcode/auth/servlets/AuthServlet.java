@@ -55,8 +55,6 @@ public class AuthServlet extends HttpServlet{
 			s.setAttribute("color", u.getColor());
 			s.setAttribute("banLevel", u.getBan());
 			s.setAttribute("role", u.getRoleId());
-			//0 is conversation with BOT
-			s.setAttribute("convId", "0");
 		}
 	}
 }

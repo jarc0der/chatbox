@@ -30,6 +30,9 @@
 		<div class="col-sm-8 rightbox">
 			<div class="messagebox scroll-messages">
 				<c:choose>
+					<c:when test="${startPage == 1}">
+						<p style="color:red">This is start page</p>
+					</c:when>
 					<c:when test="${fn:length(mList) eq 0}">
 						<p style="color:red">There is no messages yet!</p>
 					</c:when>
