@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Box</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Certificate info -->
+            <div class="col-md-6">
+                <h5>Статистика:</h5>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>IP-адреса</th>
+                            <th>Веб-ресурс</th>
+                            <th>Відповідь</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="success">
+                            <td>07.05</td>
+                            <td>127.0.0.1</td>
+                            <td><a href="">http://mychat.ua</a></td>
+                            <td><b>GOOD</b></td>
+                        </tr>
+                        <tr class="warning">
+                            <td>07.05</td>
+                            <td>192.168.0.1</td>
+                                          <td><a href="">http://mychat.ua</a></td>
+              <td><a href="">http://mychat.ua</a></td>
+                            <td><b>BAD</b></td>
+                        </tr>
+                        <tr class="info">
+                            <td>07.05</td>
+                            <td>8.8.8.8</td>
+                            <td><a href="">http://mychat.ua</a></td>
+                            <td><b>ERROR</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Add subject to certificate -->
+            <div class="col-md-6">
+                <h5>Інформація:</h5>
+                <ul>
+                    <li>GOOD - запит успішний. Повідомлення пройшло всі тестування.</li>
+                    <li>BAD - запит успішний. Повідомлення не пройшло аналіз.</li>
+                    <li>ERROR - запит з помилкою. Причини: клієнтський модуль.</li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

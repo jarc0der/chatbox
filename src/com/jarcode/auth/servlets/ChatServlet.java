@@ -38,16 +38,14 @@ public class ChatServlet extends HttpServlet {
 		//check if cList size not bigger than convID
 		if(convId != null){
 			int id = Integer.valueOf(convId);
-//			req.setAttribute("currentConv", id);
 			mList = mDAO.getAllMessagesByConvID(id);
 		}else{
 			System.out.println("Set start page ");
 			req.setAttribute("startPage", 1);
 		}
 		try {			
-			
 			req.setAttribute("mList", mList); //messages list
-			req.setAttribute("cList", cList); //conversation list
+			req.setAttribute("cList", cList); //conversation list;
 			req.setAttribute("login", login);
 			req.setAttribute("role", roleId);
 			

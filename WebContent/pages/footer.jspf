@@ -1,3 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<p>YT &copy; 2017</p>
+<%@page pageEncoding="UTF-8"%>
+
+<div class="row footer">
+	<div class="col-md-12">
+		<p class="text-center">
+			<b>Публічний сервер аналізу повідомлень на веб-ресурсах</b> &copy;
+			2017
+		</p>
+	</div>
+</div>

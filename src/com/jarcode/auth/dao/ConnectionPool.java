@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class ConnectionPool {
 	private static String username = "root";
 	private static String password = "root";
-	private static String URL = "jdbc:mysql://localhost:3306/chatbox?useSSL=false";
+	private static String URL = "jdbc:mysql://localhost:3306/chatbox?useSSL=false&amp;encoding=UTF-8&amp;useUnicode=true&amp;characterEncoding=UTF-8";
 	
 	private static Connection _con;
 	

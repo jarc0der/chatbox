@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<div class="row">
+            <!-- Certificate info -->
+            <div class="col-md-12">
+                <h3>Пошук за критерієм:</h3>
+                <form class="form-inline" action="">
+                    <div class="radio">
+                        <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    за назвою ресурсу
+  </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+    за IP адресою
+  </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+    за типом відповіді
+  </label>
+                    </div>
+                    <br><br>
+                    <div class="form-group">
+                        <label for="">Ключове слово</label>
+                        <input type="text" class="form-control input-sm" size="20">
+                    </div>
+                    <br><br>
+                    <button type="submit" class="btn btn-success">Пошук</button>
+                </form>
+            </div>
+
+        </div>

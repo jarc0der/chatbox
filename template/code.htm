@@ -1,0 +1,17 @@
+<c:if test="${sessionScope.login != null }">
+    <li><a href="logout">Вихід</a>
+</c:if>
+
+//////////// LOGIN MESSAGES ////////////////////
+<c:if test="${msg != null }">
+	<p>
+		<c:choose>
+			<c:when test="${msg.type == 'SUCCESS' }">
+				<p style="color:green"><c:out value="${msg.msg }" /></p>
+			</c:when>
+			<c:when test="${msg.type == 'WARN' }">
+				<p style="color:red"><c:out value="${msg.msg }" /></p>
+			</c:when>
+		</c:choose>
+		<c:remove var="msg" scope="session" />
+</c:if>
